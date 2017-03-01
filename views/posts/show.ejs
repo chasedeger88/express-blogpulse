@@ -6,6 +6,44 @@
 
 <p><%= post.content %></p>
 
-<hr />
+<strong>Tags:</strong>
+
+<% post.tags.forEach(function(t){ %>
+  <a href="/tags/<%= t.id %>">
+    #<%= t.name %>
+  </a>
+<% }); %>
+
+<hr>
+
+<a href="/posts/<%= post.id %>" class="btn btn-danger" id="delete-post">
+  Delete this post and all tag associations?
+</a>
+
+<hr>
+
+<h2>Comments - Tell Us What You Think!</h2>
+
+<% post.comments.forEach(function(comment){ %>
+  <div>
+    <p><%= comment.content %></p>
+    <p>&mdash;<%= comment.name %></p>
+  </div>
+<% }); %>
+
+<form method="POST" action="/comments">
+  <div class="form-group">
+    <label for="content">Comment:</label>
+    <textarea name="content" class="form-control"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" name="name" class="form-control">
+  </div>
+  <input type="hidden" name="postid" value="<%= post.id %>">
+  <input type="submit" class="btn btn-success">
+</form>
+
+<hr>
 
 <a href="/">&larr; Back Home</a>
