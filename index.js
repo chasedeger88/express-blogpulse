@@ -32,9 +32,11 @@ app.get('/', function(req, res) {
   });
 });
 
-// bring in authors and posts controllers
+// bring in authors, posts, and comments controllers
 app.use('/authors', require('./controllers/authors'));
 app.use('/posts', require('./controllers/posts'));
+app.use('/comments', require('./controllers/comments'));
+app.use('/tags', require('./controllers/tags'));
 
 var server = app.listen(process.env.PORT || 3000);
 
