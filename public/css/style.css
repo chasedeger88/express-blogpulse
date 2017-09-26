@@ -1,0 +1,55 @@
+html,
+body {
+    background-color: #97A7B3;
+    font-family: 'Expletus Sans', cursive;
+    color: #333232;
+}
+
+.navbar-default {
+    background-color: #7E7F9A;
+    border-color: #7E7F9A;
+}
+
+.navbar-default .navbar-nav>li>a,
+.navbar-default .navbar-brand {
+    color: #97A7B3;
+}
+
+.form-control,
+input,
+textarea,
+.well {
+    background-color: #CEB7B3;
+    border: 1px solid #333232;
+}
+
+.comment-form {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.comment-form input,
+.comment-form textarea {
+    width: 100%;
+}
+
+.comment-form .submit {
+    padding: 0.5em;
+}
+
+.col-100 {
+    width: 100%;
+}
+
+label {
+    margin-right: 0.5em;
+}
+
+.top {
+    float: left;
+}
+
+.comment-author {
+    text-transform: uppercase;
+    color: #F7B2AD;
+}

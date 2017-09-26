@@ -8,4 +8,21 @@
 
 <hr />
 
+<form class="comment-form" method="POST" action="<%= '/posts/'+ post.id + '/comments'%>">
+    <p class="col-100"><label name="name">Name:</label>
+    <input type="text" name="name"></p>
+    <p class="col-100"><label class="top" name ="content">Comment:</label>
+    <textarea name="content" cols="50" rows="5" placeholder="Write your comment..."></textarea></p>
+    <p class="col-100"><input class="submit" type="submit" value="Submit Comment"></p>
+
+</form>
+
+<hr />
+
+<% post.comments.forEach(function(comment){%>
+   <p><%=comment.content%> by <span class="comment-author"><%=comment.name%>  </span></p>
+
+<%})%>
+
+
 <a href="/">&larr; Back Home</a>

@@ -1,3 +1,4 @@
+///mine
 var express = require('express');
 var bodyParser = require('body-parser');
 var ejsLayouts = require('express-ejs-layouts');
@@ -28,7 +29,7 @@ app.get('/', function(req, res) {
   }).then(function(posts) {
     res.render('main/index', { posts: posts });
   }).catch(function(error) {
-    res.status(400).render('main/404');
+    //res.status(400).render('main/404');
   });
 });
 

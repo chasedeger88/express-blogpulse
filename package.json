@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "lint:js": "node_modules/eslint/bin/eslint.js ./ ./**/*.js --fix; exit 0",
     "lint:css": "node_modules/csslint/cli.js public/css/; exit 0"
   },
@@ -28,5 +28,16 @@
     "pg-hstore": "^2.3.2",
     "rowdy-logger": "0.0.2",
     "sequelize": "^3.23.3"
-  }
+  },
+  "description": "To practice 1:M associations, we'll be adding comment functionality to an existing blog application.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chasedeger88/express-blogpulse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/chasedeger88/express-blogpulse/issues"
+  },
+  "homepage": "https://github.com/chasedeger88/express-blogpulse#readme"
 }
