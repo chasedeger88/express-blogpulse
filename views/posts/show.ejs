@@ -5,7 +5,12 @@
 </p>
 
 <p><%= post.content %></p>
-
+<p>
+	<%=post.tags.forEach(function(tag){ %>
+		<a href="/posts/tags/<%= tag.name %>"><%= tag.name %></a>&nbsp;
+	<% }); %>
+		
+	</p>
 <hr />
 
 <form class="comment-form" method="POST" action="<%= '/posts/'+ post.id + '/comments'%>">
@@ -18,11 +23,11 @@
 </form>
 
 <hr />
-
+<ul>
 <% post.comments.forEach(function(comment){%>
-   <p><%=comment.content%> by <span class="comment-author"><%=comment.name%>  </span></p>
+   <li><%=comment.content%> by <span class="comment-author"><%=comment.name%>  </span></li>
 
 <%})%>
-
+</ul>
 
 <a href="/">&larr; Back Home</a>

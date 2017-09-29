@@ -12,6 +12,13 @@ router.post('/', function(req, res) {
             authorId: req.body.authorId
         })
         .then(function(post) {
+            db.tag.findOrCreate({
+                where: {name: req.body.tag}
+            }).spread(function(tag, created){
+                post.addTag(tag).then(function(){
+                    console.log("yippee!");
+                })
+            })
             res.redirect('/');
         })
         .catch(function(error) {
@@ -32,16 +39,16 @@ router.get('/new', function(req, res) {
 
 // GET /posts/:id - display a specific post and its author
 router.get('/:id', function(req, res) {
+    console.log("what the fuck");
     db.post.find({
             where: { id: req.params.id },
-            include: [db.author, db.comment]
+            include: [db.author, db.comment, db.tag]
         })
         .then(function(post) {
-            console.log(post.comments);
-
+            console.log("wtf2");
 
             if (!post) throw Error();
-            res.render('posts/show', { post: post });
+            res.render('/posts/show', { post: post });
 
         })
         .catch(function(error) {
@@ -49,7 +56,6 @@ router.get('/:id', function(req, res) {
         });
 });
 
-// make a new comment
 router.post('/:id/comments', function(req, res) {
     var postId = req.params.id;
     var commentName = req.body.name;
@@ -63,12 +69,28 @@ router.post('/:id/comments', function(req, res) {
                 where: { id: postId }
             }).then(function(post) {
                 post.addComment(comment);
-            });
-            res.status(303).redirect('/posts/' + postId);
+            })
+            res.status(303).redirect('/posts/' + postId)
         })
         .catch(function(error) {
             res.status(400).render('main/404');
         });
 });
+// GET for /posts/tag -returns all posts w/ given tag
+router.get('/tags/:tag', function(req,res){
+    db.tag.findOne({
+        where: {name: req.params.tag}
+    }).then(function(tag){
+        tag.getPosts().then(function(posts){
+            console.log("These posts are tagge with " + tag.name + ":");
+            res.render('posts/index', {posts: posts});
+        })
+    })
+})
 
 module.exports = router;
+
+
+
+
+
